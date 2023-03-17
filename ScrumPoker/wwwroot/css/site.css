@@ -1,5 +1,7 @@
 ﻿html {
-  font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -8,12 +10,48 @@
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
     margin-bottom: 60px;
     background-color: #F6F1F1;
+    height: 100%;
+}
+
+nav {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    height: 10%;
+}
+
+
+main {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+.resultsSection {
+    background-color: red;
+    width: 100%;
+    height: 30%;
+}
+
+.playersSection {
+    background-color: blue;
+    width: 100%;
+    height: 30%;
+}
+
+.votingCardsSection {
+    background-color: green;
+    width: 100%;
+    height: 40%;
 }
