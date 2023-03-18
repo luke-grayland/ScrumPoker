@@ -1,0 +1,30 @@
+﻿@model ScrumPoker.Models.GameModel
+
+@{
+    ViewBag.Title = "Game Screen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+          
+
+<div class="results">
+    <div class="resultsBoard">
+        <div class="average">
+            <h4>Average:</h4>
+            <h1>10.5</h1>
+        </div>
+        <button class="showButton">Show</button>
+    </div>
+</div>
+
+
+<div class="players">
+    <h1>Players</h1>
+</div>
+
+<div class="votingCards">
+    <h1>cards</h1>
+    @foreach (var card in Model.CardValues)
+            {
+                <h1>@card</h1>
+            }
+</div>

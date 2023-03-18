@@ -3,11 +3,15 @@ namespace ScrumPoker.Models
 {
     public class CardModel
     {
-        public int Value { get; set; }
+        public int CardValue { get; set; }
+        public bool IsSelected { get; set; }
+        public bool IsDisplayed { get; set; }
 
-        public CardModel(int value)
+        public CardModel(int cardValue)
         {
-            Value = value;
+            CardValue = cardValue;
+            IsSelected = false;
+            IsDisplayed = false;
         }
     }
 }
