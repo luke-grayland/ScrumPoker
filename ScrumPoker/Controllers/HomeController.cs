@@ -26,11 +26,11 @@ public class HomeController : Controller
 
     public IActionResult StartGame()
     {
-        var cardValues = new List<int> { 1, 2, 3 };
+        var votingCardValues = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
         var routeValues = new RouteValueDictionary()
         {
-            { "cardValues", cardValues }
+            { "votingCardValues", votingCardValues}
         };
 
         return RedirectToAction("InitialiseGame", "Game", routeValues);

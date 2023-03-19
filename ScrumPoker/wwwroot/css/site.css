@@ -4,7 +4,8 @@
     --mediumBlue: #B8E1FF;
     --greyGreen: #82ABA1;
     --lightGreen: #94FBAB;
-    --borderRadius: 10px;
+    --borderRadiusMedium: 15px;
+    --borderRadiusSmall: 10px;
     --borderWidthMedium: 5px;
     --borderWidthSmall: 3px;
 }
@@ -22,7 +23,7 @@ html {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
 }
 
 h2 {
@@ -79,17 +80,18 @@ main {
 
 .resultsBoard {
     background-color: var(--mediumBlue);
-    width: 50%;
+    width: 40%;
     height: 80%;
     margin: auto;
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadiusMedium);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
+    justify-content: space-evenly;
     border: solid;
     border-width: var(--borderWidthMedium);
     border-color: var(--lightBlue);
+    padding: 5px;
 }
 
 .average {
@@ -106,7 +108,7 @@ main {
     width: 25%;
     border: solid;
     border-width: var(--borderWidthSmall);
-    border-radius: var(--borderRadius);
+    border-radius: var(--borderRadiusSmall);
     border-color: var(--greyGreen);
     display: flex;
     align-content: center;
@@ -120,9 +122,56 @@ main {
 .players {
     width: 100%;
     height: 25%;
+    display: flex;
+    justify-content: space-evenly;
+
+   
 }
 
 .votingCards {
-    width: 100%;
+    width: 70%;
     height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: red;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.card {
+    height: 90%;
+    border-radius: var(--borderRadiusMedium);
+    border-width: var(--borderWidthSmall);
+    border-color: var(--lightBlue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player {
+    background-color: var(--greyGreen);
+    width: 100%;
+    min-width: 50px;
+    
+}
+
+.voting {
+    width: 100px;
+    height: 40%;
+}
+
+.playerCardAndName {
+    display: flex;
+    height: 95%;
+    width: 5%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: center;
+}
+
+.playerName {
+    margin: 5px;
 }

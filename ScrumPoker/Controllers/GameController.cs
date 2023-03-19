@@ -11,9 +11,9 @@ namespace ScrumPoker.Controllers
 {
     public class GameController : Controller
     {
-        public IActionResult InitialiseGame(IList<int> cardValues)
+        public IActionResult InitialiseGame(IList<int> votingCardValues)
         {
-            var gameConfig = new GameModel(cardValues);
+            var gameConfig = new GameModel(votingCardValues);
 
             return View("GameView", gameConfig);
         }

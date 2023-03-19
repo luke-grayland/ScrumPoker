@@ -18,13 +18,22 @@
 
 
 <div class="players">
-    <h1>Players</h1>
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
 </div>
 
 <div class="votingCards">
-    <h1>cards</h1>
-    @foreach (var card in Model.CardValues)
-            {
-                <h1>@card</h1>
-            }
+    @foreach (var value in Model.VotingCardValues)
+        {
+            @Html.Partial("_VotingCard", new VotingCardModel(value))
+        }
+
 </div>
