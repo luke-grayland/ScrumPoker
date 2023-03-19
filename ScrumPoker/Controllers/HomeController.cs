@@ -26,7 +26,7 @@ public class HomeController : Controller
 
     public IActionResult StartGame()
     {
-        var votingCardValues = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        var votingCardValues = new List<int> { 1, 2, 3, 5, 8, 11, 13, 18, 21, 34 };
 
         var routeValues = new RouteValueDictionary()
         {

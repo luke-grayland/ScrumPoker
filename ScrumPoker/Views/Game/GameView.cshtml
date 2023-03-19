@@ -4,8 +4,12 @@
     ViewBag.Title = "Game Screen";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-          
 
+<div class="navBar">
+    @*<button class="showButton" asp-controller="###controller###" asp-action="###method###">New Game</button>*@
+    <button asp-controller="" asp-action="">New Game</button>
+    <button asp-controller="" asp-action="">Invite</button>
+</div>
 <div class="results">
     <div class="resultsBoard">
         <div class="average">
@@ -15,25 +19,29 @@
         <button class="showButton">Show</button>
     </div>
 </div>
-
-
 <div class="players">
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 55))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 1))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 2))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 3))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 4))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 5))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 6))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 7))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 8))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 9))
+    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 10))
 </div>
-
 <div class="votingCards">
-    @foreach (var value in Model.VotingCardValues)
+    <div class="votingCardsRow">
+        @foreach (var cardValue in Model.VotingCardsTopRow)
         {
-            @Html.Partial("_VotingCard", new VotingCardModel(value))
+            @Html.Partial("_VotingCard", new VotingCardModel(cardValue))
         }
-
+    </div>
+    <div class="votingCardsRow">
+        @foreach (var cardValue in Model.VotingCardsBottomRow)
+        {
+            @Html.Partial("_VotingCard", new VotingCardModel(cardValue))
+        }
+    </div>
 </div>

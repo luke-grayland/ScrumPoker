@@ -8,8 +8,12 @@
 
   <ItemGroup>
     <None Remove="BuildWebCompiler" />
+    <None Remove="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

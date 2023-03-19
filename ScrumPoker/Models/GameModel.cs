@@ -4,11 +4,15 @@ namespace ScrumPoker.Models
     public class GameModel
     {
         public int TotalPlayers { get; set; }
-        public IList<int> VotingCardValues { get; set; }
+        public IList<int> VotingCardsTopRow { get; set; }
+        public IList<int> VotingCardsBottomRow { get; set; }
 
-        public GameModel(IList<int> votingCardValues)
+        public GameModel(
+            IList<int> votingCardsTopRow,
+            IList<int> votingCardsBottomRow)
         {
-            VotingCardValues = votingCardValues;
+            VotingCardsTopRow = votingCardsTopRow;
+            VotingCardsBottomRow = votingCardsBottomRow;
         }
     }
 }
