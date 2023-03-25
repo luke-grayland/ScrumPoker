@@ -1,4 +1,11 @@
-﻿:root {
+﻿@font-face {
+    font-family: 'futura';
+    src: url('../futura_font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
     --pink: #E8AEB7;
     --lightBlue: #A9FFF7;
     --mediumBlue: #B8E1FF;
@@ -10,11 +17,18 @@
     --borderWidthSmall: 3px;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     position: relative;
     height: 100%;
     min-height: 100%;
     font-size: 14px;
+    font-family: futura, sans-serif;
 }
 
 @media (min-width: 768px) {
@@ -24,7 +38,8 @@ html {
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
+    margin: 2px;
 }
 
 h2 {
@@ -37,6 +52,7 @@ h3 {
 
 h4 {
     font-size: 1.5rem;
+    margin: 2px;
 }
 
 h5 {
@@ -47,23 +63,21 @@ body {
     margin-bottom: 60px;
     background-color: #F6F1F1;
     height: 100%;
+    overflow: hidden;
 }
 
 .navBar {
     display: flex;
-    width: 100%;
-    height: 5%;
+    height: 7%;
     background-color: var(--lightBlue);
-    align-content: space-between;
-    padding: 0px 0px;
-    justify-content: center;
-    
+    padding: 5px 20px;
+    justify-content: space-between;
+    border-bottom-style: solid;
+    border-bottom-color: var(--greyGreen);
+    border-bottom-width: var(--borderWidthSmall);
 }
 
 button {
-    background-color: var(--lightBlue);
-    height: 90%;
-    max-height: 50px;
     width: 150px;
     border: solid;
     border-width: var(--borderWidthSmall);
@@ -72,13 +86,19 @@ button {
     display: flex;
     align-content: center;
     justify-content: center;
-    margin: auto;
     align-items: center;
+    font-family: futura, sans-serif;
     
 }
 
+.navButton {
+    background-color: var(--mediumBlue);
+    height: 80%;
+    margin: auto 0px;
+}
+
 main {
-    height: 95%;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -95,6 +115,7 @@ main {
     height: 25%;
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 .resultsBoard {
@@ -119,6 +140,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: auto;
+    justify-content: center;
 }
 
 .buttonText {
@@ -136,6 +159,7 @@ main {
     width: 45%;
     height: 50%;
     margin: auto;
+    padding: 10px;
 }
 
 .votingCardsRow {
@@ -152,21 +176,23 @@ main {
     border-radius: var(--borderRadiusMedium);
     border-width: var(--borderWidthSmall);
     border-color: var(--lightBlue);
+    border-style: solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 50px;
 }
 
 .player {
     background-color: var(--greyGreen);
     width: 100%;
-    min-width: 50px;
 }
 
 .voting {
     width: 130px;
     margin: 5px 15px;
+    background-color: var(--mediumBlue);
 }
 
 .playerCardAndName {
@@ -181,4 +207,11 @@ main {
 
 .playerName {
     margin: 5px;
+}
+
+.showButton {
+    margin: 5px;
+    background-color: var(--lightBlue);
+    height: 100px;
+    margin: auto 5px;
 }

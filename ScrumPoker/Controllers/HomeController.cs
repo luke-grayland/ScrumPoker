@@ -30,7 +30,7 @@ public class HomeController : Controller
 
         var routeValues = new RouteValueDictionary()
         {
-            { "votingCardValues", votingCardValues}
+            {"votingCardValues", votingCardValues}
         };
 
         return RedirectToAction("InitialiseGame", "Game", routeValues);

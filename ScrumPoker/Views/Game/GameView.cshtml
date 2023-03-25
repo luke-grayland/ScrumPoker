@@ -7,8 +7,8 @@
 
 <div class="navBar">
     @*<button class="showButton" asp-controller="###controller###" asp-action="###method###">New Game</button>*@
-    <button asp-controller="" asp-action="">New Game</button>
-    <button asp-controller="" asp-action="">Invite</button>
+    <button class="navButton" asp-controller="" asp-action="">New Game</button>
+    <button class="navButton" asp-controller="" asp-action="">Invite</button>
 </div>
 <div class="results">
     <div class="resultsBoard">
@@ -20,16 +20,10 @@
     </div>
 </div>
 <div class="players">
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 1))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 2))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 3))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 4))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 5))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 6))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 7))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 8))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 9))
-    @Html.Partial("_PlayerCard", new PlayerCardModel("Luke", 10))
+    @foreach (var player in Model.Players)
+    {
+        @Html.Partial("_PlayerCard", player.Card)
+    }
 </div>
 <div class="votingCards">
     <div class="votingCardsRow">

@@ -16,4 +16,12 @@
   <ItemGroup>
     <Folder Include="Helpers\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="wwwroot\futura medium bt.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\futura_font.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>
