@@ -1,15 +1,44 @@
-﻿@{
+﻿@model ScrumPoker.Models.PlayerGameViewModel
+
+@{
     ViewBag.Title = "New Game";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="navBar">
-    @*<button class="showButton" asp-controller="###controller###" asp-action="###method###">New Game</button>*@
-    <button class="navButton" asp-controller="" asp-action="">New Game</button>
-    <button class="navButton" asp-controller="" asp-action="">Invite</button>
 </div>
 
-<div class="">
-    <h1>New Game</h1>
-    <button>Start</button>
+<div class="startScreen">
+    <div class="startScreenContent">
+        <h3>New Game</h3>
+
+        @using (var newGameForm = Html.BeginForm("StartGame", "Home"))
+        {
+            @Html.TextBoxFor(m => m.PlayerName, new { @class = "input formBorder" })
+            @Html.DropDownListFor(
+                m => m.VotingSystem,
+                new SelectList(new List<string> { "1,2,3,5,8,13,21,34" }),
+                "Select a voting system",
+                new { @class = "input formBorder" })
+
+            <input type="submit" value="Start" class="submitButton" />
+        }
+
+
+
+        @*<form class="startScreenForm" asp-controller="Home" asp-action="StartGame" method="post">
+            <input class="input formBorder"
+                   type="text"
+                   id="playerName"
+                   name="playerName"
+                   placeholder="Name">
+            <select class="input formBorder" placeholder="Voting System" id="votingSystem">
+                <option value="1,2,3,5,8,13,21,34">1, 2, 3, 5, 8, 13, 21, 34</option>
+            </select>
+            <input type="submit"
+                   value="Start"
+                   class="submitButton" />*@
+        @*</form>*@
+    </div>
 </div>
+

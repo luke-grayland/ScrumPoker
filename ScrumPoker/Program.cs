@@ -1,7 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using ScrumPoker.Helpers;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<IGameHelper, GameHelper>();
+builder.Services.AddSingleton<ICardHelper, CardHelper>();
 
 var app = builder.Build();
 

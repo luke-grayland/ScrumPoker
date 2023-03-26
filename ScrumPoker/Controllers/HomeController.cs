@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using ScrumPoker.Helpers;
 using ScrumPoker.Models;
 
 namespace ScrumPoker.Controllers;
@@ -7,10 +8,12 @@ namespace ScrumPoker.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IGameHelper _gameHelper;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IGameHelper gameHelper)
     {
         _logger = logger;
+        _gameHelper = gameHelper;
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -24,17 +27,28 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
     public IActionResult StartGame()
     {
-        var votingCardValues = new List<int> { 1, 2, 3, 5, 8, 11, 13, 18, 21, 34 };
+        var playerName =
+            _gameHelper.SanitiseValidateName(Request.Form["playerName"]);
 
-        var routeValues = new RouteValueDictionary()
+        var votingCardValues =
+            _gameHelper.FormatVotingCardValues(Request.Form["votingSystem"]);
+
+        var gameConfig = new RouteValueDictionary()
         {
-            {"votingCardValues", votingCardValues}
+            {"votingCardValues", votingCardValues},
+            {"playerName", playerName}
         };
 
-        return RedirectToAction("InitialiseGame", "Game", routeValues);
+        return RedirectToAction("InitialiseGame", "Game", gameConfig);
     }
+
+    //public IActionResult JoinGame()
+    //{
+    //    return RedirectToAction("JoinGame", "Game", routeValues);
+    //}
 
 }
 

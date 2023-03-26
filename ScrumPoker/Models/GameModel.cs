@@ -9,11 +9,10 @@ namespace ScrumPoker.Models
         public IList<int> VotingCardsBottomRow { get; set; }
 
         public GameModel(
-            IList<PlayerModel> players,
             IList<int> votingCardsTopRow,
             IList<int> votingCardsBottomRow)
         {
-            Players = players;
+            Players = new List<PlayerModel>();
             VotingCardsTopRow = votingCardsTopRow;
             VotingCardsBottomRow = votingCardsBottomRow;
         }

@@ -12,12 +12,29 @@ namespace ScrumPoker.Controllers
     {
         private readonly ICardHelper _cardHelper;
 
-        public GameController()
+        public GameController(ICardHelper cardHelper)
         {
-            _cardHelper = new CardHelper(); // TODO find DI framework to use
+            _cardHelper = cardHelper;
         }
 
-        public IActionResult InitialiseGame(IList<int> votingCardValues)
+        public IActionResult InitialiseGame(
+            IList<int> votingCardValues,
+            string playerName)
+        {
+            var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
+
+            var gameConfig = new GameModel(
+                votingCardRows.Item1,
+                votingCardRows.Item2);
+
+            gameConfig.Players.Add(new PlayerModel(playerName, 1));
+
+            return View("GameView", gameConfig);
+        }
+
+        public IActionResult JoinGame(
+            IList<int> votingCardValues,
+            string playerName)
         {
             var players = new List<PlayerModel>()
                 {
@@ -36,12 +53,14 @@ namespace ScrumPoker.Controllers
             var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
 
             var gameConfig = new GameModel(
-                players,
                 votingCardRows.Item1,
                 votingCardRows.Item2);
 
+            gameConfig.Players.Add(new PlayerModel(playerName, 1));
+
             return View("GameView", gameConfig);
         }
+
     }
 }
 
