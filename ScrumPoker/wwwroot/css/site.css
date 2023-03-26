@@ -15,6 +15,7 @@
     --borderRadiusSmall: 10px;
     --borderWidthMedium: 5px;
     --borderWidthSmall: 3px;
+
 }
 
 * {
@@ -29,6 +30,7 @@ html {
     min-height: 100%;
     font-size: 14px;
     font-family: futura, sans-serif;
+    
 }
 
 @media (min-width: 768px) {
@@ -88,8 +90,16 @@ button {
     justify-content: center;
     align-items: center;
     font-family: futura, sans-serif;
+    transition: 0.15s;
     
 }
+
+    button:hover {
+        background-color: var(--greyGreen);
+        color: white;
+        transform: scale(1.08);
+        cursor: pointer;
+    }
 
 .navButton {
     background-color: var(--mediumBlue);
@@ -156,10 +166,10 @@ main {
 }
 
 .votingCards {
-    width: 45%;
+    width: 55%;
     height: 50%;
     margin: auto;
-    padding: 10px;
+    padding: 15px;
 }
 
 .votingCardsRow {
@@ -182,6 +192,7 @@ main {
     justify-content: center;
     align-items: center;
     min-width: 50px;
+    
 }
 
 .player {
@@ -190,15 +201,34 @@ main {
 }
 
 .voting {
-    width: 130px;
-    margin: 5px 15px;
+    width: 100px;
+    margin: 15px 15px;
     background-color: var(--mediumBlue);
+    transition: 0.15s;
+
+}
+
+    .voting:hover {
+        transform: scale(1.08);
+        cursor: pointer;
+    }
+
+.shadowMedium {
+    -webkit-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 20px 0px rgba(0,0,0,0.75);
+}
+
+.shadowSmall {
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.5);
 }
 
 .playerCardAndName {
     display: flex;
     height: 95%;
-    width: 5%;
+    width: 100px;
     flex-direction: column;
     justify-content: space-evenly;
     align-content: center;
@@ -206,7 +236,11 @@ main {
 }
 
 .playerName {
-    margin: 5px;
+    margin-top: 12px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .showButton {
@@ -275,3 +309,8 @@ main {
     font-family: futura, sans-serif;
 }
 
+.cardValueHidden {
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background: repeating-linear-gradient( -45deg, #82ABA1, #82ABA1 2.5px, #e5e5f7 2.5px, #e5e5f7 12.5px );
+}

@@ -15,10 +15,10 @@
         @using (var newGameForm = Html.BeginForm("StartGame", "Home"))
         {
             @Html.TextBoxFor(m => m.PlayerName, new { @class = "input formBorder" })
+
             @Html.DropDownListFor(
                 m => m.VotingSystem,
                 new SelectList(new List<string> { "1,2,3,5,8,13,21,34" }),
-                "Select a voting system",
                 new { @class = "input formBorder" })
 
             <input type="submit" value="Start" class="submitButton" />

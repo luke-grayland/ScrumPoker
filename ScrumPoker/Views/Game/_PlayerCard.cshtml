@@ -1,8 +1,18 @@
 ﻿@model ScrumPoker.Models.PlayerCardModel
 
 <div class="playerCardAndName">
-    <div class="player card">
-        <h3>@Model.CardValue</h3>
-    </div>
+    @if (@Model.ValueIsDisplayed)
+    {
+        <div class="player card shadowMedium">
+            <h3>@Model.CardValue</h3>
+        </div>
+    }
+    else
+    {
+        <div class="player card shadowMedium cardValueHidden">
+        </div>
+    }
+
+
     <h5 class="playerName">@Model.Name</h5>
 </div>

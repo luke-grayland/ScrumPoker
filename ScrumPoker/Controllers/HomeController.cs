@@ -28,13 +28,17 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult StartGame()
+    public IActionResult StartGame(PlayerGameViewModel playerGameViewModel)
     {
-        var playerName =
-            _gameHelper.SanitiseValidateName(Request.Form["playerName"]);
+        if (playerGameViewModel.VotingSystem == null ||
+            playerGameViewModel.PlayerName== null)
+            throw new NullReferenceException();
 
         var votingCardValues =
-            _gameHelper.FormatVotingCardValues(Request.Form["votingSystem"]);
+            _gameHelper.FormatVotingCardValues(playerGameViewModel.VotingSystem);
+
+        var playerName =
+            _gameHelper.SanitiseValidateName(playerGameViewModel.PlayerName);
 
         var gameConfig = new RouteValueDictionary()
         {
