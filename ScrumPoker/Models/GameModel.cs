@@ -5,7 +5,7 @@ namespace ScrumPoker.Models
     {
         public int TotalPlayers { get; set; }
         public IList<PlayerModel> Players { get; set; }
-        public string VotingSystem { get; set; }
+        public string? VotingSystem { get; set; }
         public IList<int> VotingCardsTopRow { get; set; }
         public IList<int> VotingCardsBottomRow { get; set; }
 

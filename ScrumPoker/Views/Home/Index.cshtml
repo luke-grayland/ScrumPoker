@@ -9,10 +9,11 @@
 </div>
 
 <div class="startScreen">
-    <div class="startScreenContent">
+    <div class="startScreenContent shadowSmall">
         <h3>New Game</h3>
 
-        @using (var newGameForm = Html.BeginForm("StartGame", "Home"))
+        @using (var newGameForm = Html.BeginForm("StartGame", "Home", 
+        FormMethod.Post, new { @class = "startScreenForm"}))
         {
             @Html.TextBoxFor(m => m.PlayerName, new { @class = "input formBorder" })
 
@@ -23,7 +24,6 @@
 
             <input type="submit" value="Start" class="submitButton" />
         }
-
 
 
         @*<form class="startScreenForm" asp-controller="Home" asp-action="StartGame" method="post">

@@ -11,7 +11,7 @@
     "ScrumPoker": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7003",
+      "applicationUrl": "https://localhost:7004",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -24,6 +24,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+
+        //reset game
+
         return View();
     }
 
