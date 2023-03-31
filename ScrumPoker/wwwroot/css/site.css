@@ -251,6 +251,13 @@ main {
     margin: auto 5px;
 }
 
+.newVoteButton {
+    margin: 5px;
+    background-color: var(--lightBlue);
+    height: 100px;
+    margin: auto 5px;
+}
+
 .startScreen {
     height: 100%;
     width: 100%;

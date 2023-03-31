@@ -11,10 +11,16 @@ namespace ScrumPoker.Controllers
     public class GameController : Controller
     {
         private readonly ICardHelper _cardHelper;
+        private readonly IGameHelper _gameHelper;
+        private PlayerModel _player;
+        private GameModel _game;
 
-        public GameController(ICardHelper cardHelper)
+        public GameController(ICardHelper cardHelper, IGameHelper gameHelper)
         {
             _cardHelper = cardHelper;
+            _gameHelper = gameHelper;
+            _player = PlayerModelSingleton.Instance.Player;
+            _game = GameModelSingleton.Instance.Game;
         }
 
         public IActionResult InitialiseGame(
@@ -23,31 +29,27 @@ namespace ScrumPoker.Controllers
         {
             var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
 
-            var player = PlayerModelSingleton.Instance.Player;
-            player.Name = playerName;
+            _player.Name = playerName;
+            _player.Card.MyCard = true;
 
-            var gameConfig = new GameModel(
-                votingCardRows.Item1,
-                votingCardRows.Item2,
-                player);
+            _game.Players.Add(_player);
+            _game.VotingCardsTopRow = votingCardRows.Item1;
+            _game.VotingCardsBottomRow = votingCardRows.Item2;
 
-            return View("GameView", gameConfig);
+            return View("GameView", _game);
         }
 
-        // public IActionResult JoinGame(
-        //     IList<int> votingCardValues,
-        //     string playerName)
-        // {
-        //     var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
+        [HttpGet]
+        public JsonResult ShowCards()
+        {
+            var scores = new
+            {
+                averageScore = _gameHelper.CalculateAverageScore(_game.Players),
+                myCardValue = _player.Card.CardValue
+            };
 
-        //     var gameConfig = new GameModel(
-        //         votingCardRows.Item1,
-        //         votingCardRows.Item2);
-
-        //     gameConfig.Players.Add(new PlayerModel(playerName, 0, false));
-
-        //     return View("GameView", gameConfig);
-        // }
+            return Json(scores);
+        }
 
     }
 }
