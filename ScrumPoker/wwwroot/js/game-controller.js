@@ -8,7 +8,7 @@
         var selectedCardValue = ($(this).find("h3").text().parseInt());
 
         $.ajax({
-            url: "/Controller/Method",
+            url: "/Card/UpdateCard",
             type: "POST",
             data: { cardValue: selectedCardValue },
             success: function() {
