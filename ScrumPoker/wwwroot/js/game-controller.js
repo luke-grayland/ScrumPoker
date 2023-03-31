@@ -8,7 +8,7 @@
         var selectedCardValue = ($(this).find("h3").text().parseInt());
 
         $.ajax({
-            url: "/Card/UpdateCard",
+            url: "/Player/UpdatePlayerVote",
             type: "POST",
             data: { cardValue: selectedCardValue },
             success: function() {
@@ -19,8 +19,6 @@
             }
         });
     });
-
-
 
 });
 

@@ -11,13 +11,15 @@ namespace ScrumPoker.Models
 
         public GameModel(
             IList<int> votingCardsTopRow,
-            IList<int> votingCardsBottomRow)
+            IList<int> votingCardsBottomRow,
+            PlayerModel playerModel)
         {
             Players = new List<PlayerModel>();
+            Players.Add(playerModel);
+
             VotingCardsTopRow = votingCardsTopRow;
             VotingCardsBottomRow = votingCardsBottomRow;
         }
     }
 }
 
-    

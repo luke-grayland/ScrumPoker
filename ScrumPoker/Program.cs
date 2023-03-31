@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IGameHelper, GameHelper>();
 builder.Services.AddSingleton<ICardHelper, CardHelper>();
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

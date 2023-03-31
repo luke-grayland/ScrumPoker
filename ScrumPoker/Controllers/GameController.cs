@@ -23,11 +23,16 @@ namespace ScrumPoker.Controllers
         {
             var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
 
+            var player = PlayerModelSingleton.Instance.Player;
+            player.Name = playerName;
+            player.Card.Name = playerName; //shouldn't be two names
+            player.Card.CardValue = 0;
+            player.SpectactorOnly = false;
+
             var gameConfig = new GameModel(
                 votingCardRows.Item1,
-                votingCardRows.Item2);
-
-            gameConfig.Players.Add(new PlayerModel(playerName, 0, false));
+                votingCardRows.Item2,
+                player);
 
             return View("GameView", gameConfig);
         }
