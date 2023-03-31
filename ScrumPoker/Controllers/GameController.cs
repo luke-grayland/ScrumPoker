@@ -32,20 +32,20 @@ namespace ScrumPoker.Controllers
             return View("GameView", gameConfig);
         }
 
-        public IActionResult JoinGame(
-            IList<int> votingCardValues,
-            string playerName)
-        {
-            var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
+        // public IActionResult JoinGame(
+        //     IList<int> votingCardValues,
+        //     string playerName)
+        // {
+        //     var votingCardRows = _cardHelper.SplitCardsToRows(votingCardValues);
 
-            var gameConfig = new GameModel(
-                votingCardRows.Item1,
-                votingCardRows.Item2);
+        //     var gameConfig = new GameModel(
+        //         votingCardRows.Item1,
+        //         votingCardRows.Item2);
 
-            gameConfig.Players.Add(new PlayerModel(playerName, 0, false));
+        //     gameConfig.Players.Add(new PlayerModel(playerName, 0, false));
 
-            return View("GameView", gameConfig);
-        }
+        //     return View("GameView", gameConfig);
+        // }
 
     }
 }
