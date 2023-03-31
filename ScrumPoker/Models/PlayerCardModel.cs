@@ -3,11 +3,11 @@ namespace ScrumPoker.Models
 {
     public class PlayerCardModel : CardModel
     {
-        public string Name { get; set; }
+        public PlayerModel Player;
 
-        public PlayerCardModel(string name, int cardValue) : base(cardValue)
+        public PlayerCardModel(PlayerModel player, int cardValue) : base(cardValue)
         {
-            Name = name;
+            Player = player;
         }
     }
 }

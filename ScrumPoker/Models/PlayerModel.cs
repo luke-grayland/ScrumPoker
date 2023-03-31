@@ -6,11 +6,11 @@ namespace ScrumPoker.Models
         public string Name { get; set; }
         public PlayerCardModel Card { get; set; }
         public bool SpectactorOnly { get; set; }
-        
+
         public PlayerModel(string name, int cardValue, bool spectactorOnly)
         {
             Name = name;
-            Card = new PlayerCardModel(name, cardValue);
+            Card = new PlayerCardModel(this, cardValue);
             SpectactorOnly = spectactorOnly;
         }
     }

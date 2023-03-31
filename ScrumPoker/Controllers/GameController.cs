@@ -25,9 +25,6 @@ namespace ScrumPoker.Controllers
 
             var player = PlayerModelSingleton.Instance.Player;
             player.Name = playerName;
-            player.Card.Name = playerName; //shouldn't be two names
-            player.Card.CardValue = 0;
-            player.SpectactorOnly = false;
 
             var gameConfig = new GameModel(
                 votingCardRows.Item1,
