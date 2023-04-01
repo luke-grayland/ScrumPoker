@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $(".showButton").click(function () {
+    function showCardsAndAverage() {
         $.ajax({
             url: "/Game/ShowCards",
             type: "GET",
@@ -13,34 +13,23 @@
                 $(".showButton").text("New Vote");
                 $(".showButton").removeClass("showButton");
             },
-            error: function() {
-                "Error";
+            error: function(error) {
+                Console.log("Error: " + error);
             }
         })
-    });
+    }
 
-    $(".newVoteButton".click(function() {
-        
+    function newVote() {
+        $("#averageValue").text("");                
+        $(".player").addClass("cardValueHidden");
+        $(".voting").removeClass("selected");
 
         $(".newVoteButton").addClass("showButton");
         $(".showButton").text("Show");
         $(".newVoteButton").removeClass("newVoteButton");
+    }
 
-        // $.ajax({
-        //     url: "/Game/NewVote",
-        //     type: "GET",
-        //     success: function() {
-        //         //reset scores  (might not need to do anything on backend)
-
-        //         $(".newVoteButton").addClass("showButton");
-        //         $(".showButton").text("Show");
-        //         $(".newVoteButton").removeClass("newVoteButton");
-        //     },
-        //     error: function() {
-        //         "Error";
-        //     }
-        // })
-
-    }));
+    $(".results").on("click", ".showButton", showCardsAndAverage);
+    $(".results").on("click", ".newVoteButton", newVote);
 
 });
