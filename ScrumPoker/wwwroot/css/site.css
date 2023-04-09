@@ -126,7 +126,10 @@ main {
     height: 25%;
     display: flex;
     justify-content: center;
-    padding: 10px;
+}
+
+#averageValue {
+    min-height: 60px;
 }
 
 .resultsBoard {
@@ -164,6 +167,7 @@ main {
     height: 25%;
     display: flex;
     justify-content: space-evenly;
+    
 }
 
 .votingCards {
@@ -199,6 +203,7 @@ main {
 .player {
     background-color: var(--greyGreen);
     width: 100%;
+    font-size: 1.5rem;
 }
 
 .voting {
@@ -262,15 +267,16 @@ main {
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .startScreenContent {
-    height: 60%;
+    height: 70%;
     width: 60%;
     max-width: 550px;
     background-color: var(--mediumBlue);
-    margin: auto;
+    margin: 10px auto;
     border-radius: var(--borderRadiusSmall);
     border-style: solid;
     border-width: var(--borderWidthMedium);
@@ -279,6 +285,20 @@ main {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.logoDiv {
+    height: 33%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#homeScreenLogo {
+    height: 50%;
+    width: auto;
+    margin: auto;
 }
 
 .startScreenForm {
@@ -335,4 +355,20 @@ main {
 .selected {
     background-color: var(--lightGreen);
     
+}
+
+.inviteWindow {
+    display: none;
+    position: absolute;
+    min-height: 50px;
+    width: 20%;
+    top: 10%;
+    right: 3%;
+    z-index: 999;
+    background-color: var(--mediumBlue);
+    border-radius: var(--borderRadiusMedium);
+    border: solid;
+    border-width: var(--borderWidthMedium);
+    border-color: var(--lightBlue);
+    padding: 10px;
 }

@@ -9,11 +9,13 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IGameHelper _gameHelper;
+    private GameModel _game;
 
     public HomeController(ILogger<HomeController> logger, IGameHelper gameHelper)
     {
         _logger = logger;
         _gameHelper = gameHelper;
+        _game = GameModelSingleton.Instance.Game;
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -24,8 +26,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-
-        //reset game
+        _game.Players.Clear();
+        _game.VotingCardsBottomRow.Clear();
+        _game.VotingCardsTopRow.Clear();
 
         return View();
     }
@@ -34,7 +37,7 @@ public class HomeController : Controller
     public IActionResult StartGame(PlayerGameViewModel playerGameViewModel)
     {
         if (playerGameViewModel.VotingSystem == null ||
-            playerGameViewModel.PlayerName== null)
+            playerGameViewModel.PlayerName == null)
             throw new NullReferenceException();
 
         var votingCardValues =

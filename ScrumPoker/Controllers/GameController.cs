@@ -32,7 +32,9 @@ namespace ScrumPoker.Controllers
             _player.Name = playerName;
             _player.Card.MyCard = true;
 
-            _game.Players.Add(_player);
+            if (_game.Players.Where(x => x.Card.MyCard).Count() == 0)
+                _game.Players.Add(_player);
+
             _game.VotingCardsTopRow = votingCardRows.Item1;
             _game.VotingCardsBottomRow = votingCardRows.Item2;
 
