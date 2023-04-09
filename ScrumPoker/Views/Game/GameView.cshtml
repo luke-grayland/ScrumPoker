@@ -7,10 +7,11 @@
 
 <div class="navBar">
     <button id="newGame" class="navButton" asp-controller="" asp-action="">New Game</button>
+    <img src="~/images/LogoChipOnly.png" alt="Scrum Poker Logo" class="navBarLogo"/>
     <button id="inviteButton" class="navButton inviteHidden" asp-controller="" asp-action="">Invite</button>
 </div>
-<div class="inviteWindow shadowSmall">
-    <p>Invite link</p>
+<div id="inviteWindow" class="inviteWindow shadowSmall">
+    <p id="inviteLink">Invite link</p>
 </div>
 <div class="results">
     <div class="resultsBoard shadowSmall">

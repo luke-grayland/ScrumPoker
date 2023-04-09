@@ -71,9 +71,8 @@ body {
 
 .navBar {
     display: flex;
-    height: 7%;
+    height: 60px;
     background-color: var(--lightBlue);
-    padding: 5px 20px;
     justify-content: space-between;
     border-bottom-style: solid;
     border-bottom-color: var(--greyGreen);
@@ -104,8 +103,8 @@ button {
 
 .navButton {
     background-color: var(--mediumBlue);
-    height: 80%;
-    margin: auto 0px;
+    height: 70%;
+    margin: auto 20px;
 }
 
 main {
@@ -273,7 +272,7 @@ main {
 
 .startScreenContent {
     height: 70%;
-    width: 60%;
+    width: 55%;
     max-width: 550px;
     background-color: var(--mediumBlue);
     margin: 10px auto;
@@ -296,18 +295,18 @@ main {
 }
 
 #homeScreenLogo {
-    height: 50%;
+    height: 70%;
     width: auto;
     margin: auto;
 }
 
 .startScreenForm {
-    height: 70%;
+    height: 90%;
     width: 80%;
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .formBorder {
@@ -347,14 +346,21 @@ main {
 
 
 .cardValueHidden {
+    
     background-color: #e5e5f7;
     opacity: 0.8;
     background: repeating-linear-gradient( -45deg, #82ABA1, #82ABA1 2.5px, #e5e5f7 2.5px, #e5e5f7 12.5px );
+
 }
 
 .selected {
     background-color: var(--lightGreen);
-    
+}
+
+.navBarLogo {
+    height: 80%;
+    width: auto;
+    margin: auto;
 }
 
 .inviteWindow {

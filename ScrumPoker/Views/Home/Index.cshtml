@@ -8,19 +8,19 @@
 <div class="navBar">
 </div>
 <div class="logoDiv">
-    <img src="./ScrumPokerShowdownLogo.png" 
+    <img src="~/images/ScrumPokerShowdownLogo.png" 
     alt="Scrum Poker Logo" 
     id="homeScreenLogo"/>
 </div>
 <div class="startScreen">
     <div class="startScreenContent shadowSmall">
-        <h3>New Game</h3>
-
         @using (var newGameForm = Html.BeginForm("StartGame", "Home", 
         FormMethod.Post, new { @class = "startScreenForm"}))
         {
+            @Html.LabelFor(m => m.PlayerName)
             @Html.TextBoxFor(m => m.PlayerName, new { @class = "input formBorder" })
 
+            @Html.LabelFor(m => m.VotingSystem)
             @Html.DropDownListFor(
                 m => m.VotingSystem,
                 new SelectList(new List<string> { "1,2,3,5,8,13,21,34" }),

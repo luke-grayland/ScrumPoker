@@ -35,33 +35,33 @@
     };
 
     function showHideInviteWindow() {
+
         if ($("#inviteButton").hasClass("inviteVisible"))
         {
-            $(".inviteWindow").fadeOut();
-            $("#inviteButton").removeClass("inviteVisible");
+            hideInviteWindow();
         } 
         else if ($("#inviteButton").hasClass("inviteHidden")) {
             $(".inviteWindow").fadeIn();
             $("#inviteButton").addClass("inviteVisible");
         } 
-      }
+    }
 
-      function clickAnywhereHideWindow(e) {
-        if(!$(e.target).hasClass("inviteWindow") 
-        && !$(e.target).is("#inviteWindow"))
-        {
-            $(".inviteWindow").fadeOut();
-            $("#inviteButton").removeClass("inviteVisible");
+    function clickAnywhereHideWindow(event) {
+        if(event.target.id == "inviteWindow" || event.target.id == "inviteButton")
+            return;
 
-            //make hideWindow function above lines repeated
+        hideInviteWindow();
+    }
 
-        }
-      }
+    function hideInviteWindow() {
+        $(".inviteWindow").fadeOut();
+        $("#inviteButton").removeClass("inviteVisible");
+    }
 
     $(".results").on("click", ".showButton", showCardsAndAverage);
     $(".results").on("click", ".newVoteButton", newVote);
     $("#newGame").click(newGame);
     $("#inviteButton").click(showHideInviteWindow);
-    $("html").click(clickAnywhereHideWindow);
+    $(document).click(clickAnywhereHideWindow);
     
 });
