@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ScrumPoker.Helpers;
 using ScrumPoker.Models;
+using ScrumPoker.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ScrumPoker.Controllers
 {
@@ -14,6 +16,7 @@ namespace ScrumPoker.Controllers
         private readonly IGameHelper _gameHelper;
         private PlayerModel _player;
         private GameModel _game;
+        private readonly IHubContext<ScrumPokerHub> _scrumPokerHub;
 
         public GameController(ICardHelper cardHelper, IGameHelper gameHelper)
         {
@@ -52,6 +55,13 @@ namespace ScrumPoker.Controllers
 
             return Json(scores);
         }
+
+        [HttpPost]
+        public async Task TestMessage(string message)
+        {
+            await _scrumPokerHub.Clients.All.SendAsync("ReceiveMessage", message);
+        }
+
 
     }
 }

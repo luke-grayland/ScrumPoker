@@ -12,12 +12,16 @@
   <ItemGroup>
     <None Remove="BuildWebCompiler" />
     <None Remove="Helpers\" />
+    <None Remove="Hubs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Common" Version="8.0.0-preview.2.23153.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="wwwroot\js\signalr\" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\futura medium bt.ttf">

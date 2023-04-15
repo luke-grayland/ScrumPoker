@@ -7,6 +7,9 @@ namespace ScrumPoker.Models
         public string VotingSystem { get; set; } = "";
         public IList<int> VotingCardsTopRow { get; set; } = new List<int>();
         public IList<int> VotingCardsBottomRow { get; set; } = new List<int>();
+
+        public string? Message { get; set; }
+
     }
 }
 

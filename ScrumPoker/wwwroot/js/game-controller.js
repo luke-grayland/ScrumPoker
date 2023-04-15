@@ -63,5 +63,5 @@
     $("#newGame").click(newGame);
     $("#inviteButton").click(showHideInviteWindow);
     $(document).click(clickAnywhereHideWindow);
-    
+
 });

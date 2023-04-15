@@ -1,4 +1,5 @@
 ﻿using ScrumPoker.Helpers;
+using ScrumPoker.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IGameHelper, GameHelper>();
 builder.Services.AddSingleton<ICardHelper, CardHelper>();
 builder.Services.AddMemoryCache();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -28,6 +30,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapHub<ScrumPokerHub>("/scrumPokerHub");
 
 app.Run();
 
