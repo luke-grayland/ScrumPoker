@@ -1,12 +1,7 @@
-﻿using System;
-namespace ScrumPoker.Helpers
+﻿namespace ScrumPoker.Helpers
 {
     public class CardHelper : ICardHelper
     {
-        public CardHelper()
-        {
-        }
-
         public Tuple<List<int>, List<int>> SplitCardsToRows(IList<int> votingCardsVales)
         {
             var topRow = new List<int>();

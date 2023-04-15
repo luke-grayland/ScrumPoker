@@ -16,18 +16,20 @@ connection.onclose(async () => {
     await start();
 });
 
-connection.on("AddWord", function(message) {
-    $("#averageValue").append(message);
-});
 
-$("#testButton").click(function() {
-    var averageValue = $("#averageValue").text().toString();
-    console.log(averageValue);
-    connection.invoke("TestButton", averageValue)
-        .catch(function(err) {
-            return console.error(err.toString());
-        })
-})
 
+
+// connection.on("AddWord", function(message) {
+//     $("#averageValue").append(message);
+// });
+//
+// $("#testButton").click(function() {
+//     var averageValue = $("#averageValue").text().toString();
+//     console.log(averageValue);
+//     connection.invoke("TestButton", averageValue)
+//         .catch(function(err) {
+//             return console.error(err.toString());
+//         })
+// })
 
 start();

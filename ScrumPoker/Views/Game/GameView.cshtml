@@ -17,29 +17,28 @@
     <div id="resultsBoard" class="resultsBoard shadowSmall">
         <div class="average">
             <h4>Average:</h4>
-            <h1 id="averageValue">Cheese</h1>
+            <h1 id="averageValue"></h1>
         </div>
-        <button id="testButton">Test message</button>
         <button class="showButton">Show</button>
     </div>
 </div>
 <div class="players">
     @foreach (var player in Model.Players)
     {
-        @Html.Partial("_PlayerCard", player.Card)
+        @await Html.PartialAsync("_PlayerCard", player.Card)
     }
 </div>
 <div class="votingCards">
     <div class="votingCardsRow">
         @foreach (var cardValue in Model.VotingCardsTopRow)
         {
-            @Html.Partial("_VotingCard", new VotingCardModel(cardValue))
+            @await Html.PartialAsync("_VotingCard", new VotingCardModel(cardValue))
         }
     </div>
     <div class="votingCardsRow">
         @foreach (var cardValue in Model.VotingCardsBottomRow)
         {
-            @Html.Partial("_VotingCard", new VotingCardModel(cardValue))
+            @await Html.PartialAsync("_VotingCard", new VotingCardModel(cardValue))
         }
     </div>
 </div>

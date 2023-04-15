@@ -9,7 +9,7 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IGameHelper _gameHelper;
-    private GameModel _game;
+    private readonly GameModel _game;
 
     public HomeController(ILogger<HomeController> logger, IGameHelper gameHelper)
     {
@@ -55,10 +55,10 @@ public class HomeController : Controller
         return RedirectToAction("InitialiseGame", "Game", gameConfig);
     }
 
-    //public IActionResult JoinGame()
-    //{
-    //    return RedirectToAction("JoinGame", "Game", routeValues);
-    //}
+    public void JoinGame()
+    {
+        // return RedirectToAction("JoinGame", "Game", routeValues);
+    }
 
 }
 

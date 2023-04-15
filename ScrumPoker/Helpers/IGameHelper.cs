@@ -1,5 +1,4 @@
-﻿using System;
-using ScrumPoker.Models;
+﻿using ScrumPoker.Models;
 
 namespace ScrumPoker.Helpers
 {

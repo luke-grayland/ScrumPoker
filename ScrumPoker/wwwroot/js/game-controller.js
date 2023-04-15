@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    const inviteButton = $("#inviteButton");
+    
     function showCardsAndAverage() {
         $.ajax({
             url: "/Game/ShowCards",
@@ -9,12 +11,13 @@
                 $("#myCard").text(scores.myCardValue);
                 $(".player").removeClass("cardValueHidden");
 
-                $(".showButton").addClass("newVoteButton");
-                $(".showButton").text("New Vote");
-                $(".showButton").removeClass("showButton");
+                $(".showButton")
+                    .addClass("newVoteButton")
+                    .text("New Vote")
+                    .removeClass("showButton");
             },
             error: function(error) {
-                Console.log("Error: " + error);
+                console.log("Error: " + error);
             }
         })
     }
@@ -24,30 +27,31 @@
         $("#myCard").text("");
         $(".player").addClass("cardValueHidden");
         $(".voting").removeClass("selected");
-        
-        $(".newVoteButton").addClass("showButton");
+
         $(".showButton").text("Show");
-        $(".newVoteButton").removeClass("newVoteButton");
+        $(".newVoteButton")
+            .addClass("showButton")
+            .removeClass("newVoteButton");
     }
 
     function newGame() {
         window.location.href = "/Home/Index";
-    };
+    }
 
     function showHideInviteWindow() {
 
-        if ($("#inviteButton").hasClass("inviteVisible"))
+        if (inviteButton.hasClass("inviteVisible"))
         {
             hideInviteWindow();
         } 
-        else if ($("#inviteButton").hasClass("inviteHidden")) {
+        else if (inviteButton.hasClass("inviteHidden")) {
             $(".inviteWindow").fadeIn();
-            $("#inviteButton").addClass("inviteVisible");
+            inviteButton.addClass("inviteVisible");
         } 
     }
 
     function clickAnywhereHideWindow(event) {
-        if(event.target.id == "inviteWindow" || event.target.id == "inviteButton")
+        if(event.target.id === "inviteWindow" || event.target.id === "inviteButton")
             return;
 
         hideInviteWindow();
@@ -55,13 +59,14 @@
 
     function hideInviteWindow() {
         $(".inviteWindow").fadeOut();
-        $("#inviteButton").removeClass("inviteVisible");
+        inviteButton.removeClass("inviteVisible");
     }
 
-    $(".results").on("click", ".showButton", showCardsAndAverage);
-    $(".results").on("click", ".newVoteButton", newVote);
+    $(".results")
+        .on("click", ".showButton", showCardsAndAverage)
+        .on("click", ".newVoteButton", newVote);
     $("#newGame").click(newGame);
-    $("#inviteButton").click(showHideInviteWindow);
+    inviteButton.click(showHideInviteWindow);
     $(document).click(clickAnywhereHideWindow);
 
 });

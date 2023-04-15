@@ -8,7 +8,8 @@ namespace ScrumPoker.Hubs
         [HubMethodName("TestButton")]
         public async Task TestButton(string message)
         {
-            await Clients.All.SendAsync("AddWord", message);
+            await Clients.All.SendAsync("SignalRShowCardsAndAverage", message);
+            //not yet implemented
         }
 
     }

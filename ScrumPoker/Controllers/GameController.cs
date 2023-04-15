@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ScrumPoker.Helpers;
 using ScrumPoker.Models;
 using ScrumPoker.Hubs;
@@ -14,8 +10,8 @@ namespace ScrumPoker.Controllers
     {
         private readonly ICardHelper _cardHelper;
         private readonly IGameHelper _gameHelper;
-        private PlayerModel _player;
-        private GameModel _game;
+        private readonly PlayerModel _player;
+        private readonly GameModel _game;
         private readonly IHubContext<ScrumPokerHub> _scrumPokerHub;
 
         public GameController(ICardHelper cardHelper, IGameHelper gameHelper)
@@ -35,7 +31,7 @@ namespace ScrumPoker.Controllers
             _player.Name = playerName;
             _player.Card.MyCard = true;
 
-            if (_game.Players.Where(x => x.Card.MyCard).Count() == 0)
+            if (!_game.Players.Any(x => x.Card.MyCard))
                 _game.Players.Add(_player);
 
             _game.VotingCardsTopRow = votingCardRows.Item1;
@@ -55,13 +51,6 @@ namespace ScrumPoker.Controllers
 
             return Json(scores);
         }
-
-        [HttpPost]
-        public async Task TestMessage(string message)
-        {
-            await _scrumPokerHub.Clients.All.SendAsync("ReceiveMessage", message);
-        }
-
 
     }
 }

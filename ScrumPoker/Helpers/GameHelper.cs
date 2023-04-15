@@ -1,17 +1,12 @@
-﻿using System;
-using ScrumPoker.Models;
+﻿using ScrumPoker.Models;
 
 namespace ScrumPoker.Helpers
 {
     public class GameHelper : IGameHelper
     {
-        public GameHelper()
-        {
-        }
-
         public List<int> FormatVotingCardValues(string votingCardValues)
         {
-            return votingCardValues.Split(',').Select(x => int.Parse(x)).ToList();
+            return votingCardValues.Split(',').Select(int.Parse).ToList();
         }
 
         public string SanitiseValidateName(string name)

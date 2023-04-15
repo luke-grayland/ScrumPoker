@@ -5,7 +5,7 @@ namespace ScrumPoker.Controllers
 {
     public class PlayerController : Controller
     {
-        private PlayerModel _player;
+        private readonly PlayerModel _player;
         public PlayerController()
         {
             _player = PlayerModelSingleton.Instance.Player;
