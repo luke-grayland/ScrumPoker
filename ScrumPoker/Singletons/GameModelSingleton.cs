@@ -10,16 +10,5 @@ public class GameModelSingleton
         Game = new GameModel();
     }
 
-    public static GameModelSingleton Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameModelSingleton();
-            }
-            return _instance;
-        }
-    }
-
+    public static GameModelSingleton Instance => _instance ?? new GameModelSingleton();
 }

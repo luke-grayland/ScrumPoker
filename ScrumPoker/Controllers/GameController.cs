@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using ScrumPoker.Helpers;
 using ScrumPoker.Models;
 using ScrumPoker.Hubs;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace ScrumPoker.Controllers
 {
-    public class GameController : Controller
+    public class GameController : Controller, IGameController
     {
         private readonly ICardHelper _cardHelper;
         private readonly IGameHelper _gameHelper;
@@ -14,15 +15,19 @@ namespace ScrumPoker.Controllers
         private readonly GameModel _game;
         private readonly IHubContext<ScrumPokerHub> _scrumPokerHub;
 
-        public GameController(ICardHelper cardHelper, IGameHelper gameHelper)
+        public GameController(
+            ICardHelper cardHelper, 
+            IGameHelper gameHelper,
+            IHubContext<ScrumPokerHub> scrumPokerHub)
         {
             _cardHelper = cardHelper;
             _gameHelper = gameHelper;
             _player = PlayerModelSingleton.Instance.Player;
             _game = GameModelSingleton.Instance.Game;
+            _scrumPokerHub = scrumPokerHub;
         }
 
-        public IActionResult InitialiseGame(
+        public async Task<IActionResult> InitialiseGame(
             IList<int> votingCardValues,
             string playerName)
         {
@@ -31,11 +36,19 @@ namespace ScrumPoker.Controllers
             _player.Name = playerName;
             _player.Card.MyCard = true;
 
-            if (!_game.Players.Any(x => x.Card.MyCard))
-                _game.Players.Add(_player);
-
+            if (_game.Players.Any(x => x.Card.MyCard))
+                throw new Exception("Game owner already exists");
+            
+            if (_game.Players.Any(x => x.Id == _player.Id))
+                _player.Id = Guid.NewGuid();
+            
+            _game.Players.Add(_player);
+            
             _game.VotingCardsTopRow = votingCardRows.Item1;
             _game.VotingCardsBottomRow = votingCardRows.Item2;
+
+            var gameModelJson = JsonSerializer.Serialize(_game);
+            await _scrumPokerHub.Clients.All.SendAsync("ReceiveGameModelUpdate", gameModelJson);
 
             return View("GameView", _game);
         }

@@ -14,7 +14,8 @@
       "applicationUrl": "https://localhost:7004",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "preLaunchTask": "Attach to Process"
     },
     "IIS Express": {
       "commandName": "IISExpress",

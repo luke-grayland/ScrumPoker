@@ -1,4 +1,5 @@
-﻿using ScrumPoker.Helpers;
+﻿using ScrumPoker.Controllers;
+using ScrumPoker.Helpers;
 using ScrumPoker.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddSingleton<IGameHelper, GameHelper>();
 builder.Services.AddSingleton<ICardHelper, CardHelper>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSignalR();
+builder.Services.AddScoped<IGameController, GameController>();
 
 var app = builder.Build();
 

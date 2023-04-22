@@ -1,4 +1,5 @@
-﻿using ScrumPoker.Models;
+﻿using System.Collections.Concurrent;
+using ScrumPoker.Models;
 
 namespace ScrumPoker.Helpers
 {
@@ -11,10 +12,10 @@ namespace ScrumPoker.Helpers
 
         public string SanitiseValidateName(string name)
         {
-            return name; //write this method
+            return name; //TODO write this method
         }
 
-        public decimal CalculateAverageScore(IList<PlayerModel> players)
+        public decimal CalculateAverageScore(ConcurrentBag<PlayerModel> players)
         {
             if (players == null)
                 return 0;
