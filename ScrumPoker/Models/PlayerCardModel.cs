@@ -5,6 +5,10 @@ namespace ScrumPoker.Models
     {
         public PlayerModel Player;
 
+        public PlayerCardModel() : base(0)
+        {
+        }
+        
         public PlayerCardModel(PlayerModel player, int cardValue) : base(cardValue)
         {
             Player = player;

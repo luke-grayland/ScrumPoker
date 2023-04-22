@@ -15,7 +15,7 @@ namespace ScrumPoker.Helpers
             return name; //TODO write this method
         }
 
-        public decimal CalculateAverageScore(ConcurrentBag<PlayerModel> players)
+        public decimal CalculateAverageScore(IList<PlayerModel> players)
         {
             if (players == null)
                 return 0;

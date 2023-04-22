@@ -15,26 +15,19 @@ namespace ScrumPoker.Hubs
             _gameController = gameController;
             _game = GameModelSingleton.Instance.Game;
         }
-        
-        [HubMethodName("TestButton")]
-        public async Task TestButton(string message)
-        {
-            await Clients.All.SendAsync("SignalRShowCardsAndAverage", message);
-            //not yet implemented
-        }
 
+        [HubMethodName("ReceiveGameModelUpdate")]
+        public async Task ReceiveGameModelUpdate(GameModel gameModel) 
+        {
+            await Clients.All.SendAsync("ReceiveGameModelUpdate", gameModel);
+        }
+        
         [HubMethodName("UpdateLocalGameModel")]
         public async Task UpdateLocalGameModel(string jsonGameModel)
         {
             var gameModel = JsonSerializer.Deserialize<GameModel>(jsonGameModel);
-            Console.WriteLine(gameModel);
-        }
-        
-        
-        [HubMethodName("ReceiveGameModelUpdate")]
-        public async Task ReceiveGameModelUpdate(GameModel gameModel)
-        {
-            await Clients.All.SendAsync("ReceiveGameModelUpdate", gameModel);
+            gameModel.Players.First().Name = "FRED...";
+            _game = gameModel;
         }
     }
 }

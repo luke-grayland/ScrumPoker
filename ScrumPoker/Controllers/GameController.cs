@@ -50,7 +50,7 @@ namespace ScrumPoker.Controllers
             var gameModelJson = JsonSerializer.Serialize(_game);
             await _scrumPokerHub.Clients.All.SendAsync("ReceiveGameModelUpdate", gameModelJson);
 
-            return View("GameView", _game);
+            return View("GameView", _game); // _game currently not being update from Hub method
         }
 
         [HttpGet]

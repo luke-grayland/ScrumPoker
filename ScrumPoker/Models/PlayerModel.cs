@@ -8,6 +8,10 @@ namespace ScrumPoker.Models
         public bool SpectatorOnly { get; set; }
         public Guid Id { get; set; }
 
+        public PlayerModel()
+        {
+        }
+
         public PlayerModel(string name, int cardValue, bool spectatorOnly)
         {
             Name = name;
