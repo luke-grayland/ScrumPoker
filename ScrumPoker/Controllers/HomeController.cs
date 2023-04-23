@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ScrumPoker.Helpers;
 using ScrumPoker.Models;
+using ScrumPoker.Singletons;
 
 namespace ScrumPoker.Controllers;
 

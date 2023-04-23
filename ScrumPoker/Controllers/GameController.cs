@@ -4,6 +4,7 @@ using ScrumPoker.Helpers;
 using ScrumPoker.Models;
 using ScrumPoker.Hubs;
 using Microsoft.AspNetCore.SignalR;
+using ScrumPoker.Singletons;
 
 namespace ScrumPoker.Controllers
 {
@@ -36,10 +37,10 @@ namespace ScrumPoker.Controllers
             _player.Name = playerName;
             _player.Card.MyCard = true;
 
-            if (_game.Players.Any(x => x.Card.MyCard))
+            if (GameModelSingleton.Instance.Game.Players.Any(x => x.Card.MyCard))
                 throw new Exception("Game owner already exists");
             
-            if (_game.Players.Any(x => x.Id == _player.Id))
+            if (GameModelSingleton.Instance.Game.Players.Any(x => x.Id == _player.Id))
                 _player.Id = Guid.NewGuid();
             
             _game.Players.Add(_player);
@@ -50,7 +51,7 @@ namespace ScrumPoker.Controllers
             var gameModelJson = JsonSerializer.Serialize(_game);
             await _scrumPokerHub.Clients.All.SendAsync("ReceiveGameModelUpdate", gameModelJson);
 
-            return View("GameView", _game); // _game currently not being update from Hub method
+            return View("GameView", _game);
         }
 
         [HttpGet]

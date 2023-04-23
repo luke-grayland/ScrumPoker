@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using ScrumPoker.Controllers;
 using ScrumPoker.Models;
+using ScrumPoker.Singletons;
 
 namespace ScrumPoker.Hubs
 {
@@ -26,8 +27,8 @@ namespace ScrumPoker.Hubs
         public async Task UpdateLocalGameModel(string jsonGameModel)
         {
             var gameModel = JsonSerializer.Deserialize<GameModel>(jsonGameModel);
-            gameModel.Players.First().Name = "FRED...";
             _game = gameModel;
+            
         }
     }
 }
